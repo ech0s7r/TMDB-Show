@@ -1,0 +1,109 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
+    compileSdkVersion buildConfig.compileSdk
+
+    defaultConfig {
+        applicationId "com.ech0s7r.android.skeletonapp"
+        minSdkVersion buildConfig.minSdk
+        targetSdkVersion buildConfig.targetSdk
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildTypes.each {
+        it.buildConfigField 'String', 'TMDB_APIKEY', themoviedb_apiKey
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    /* Kotlin */
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.coroutines}"
+
+    /* Support Preferences */
+    implementation "com.android.support:preference-v7:${versions.android_support.preference}"
+
+    /* Dagger 2 */
+    implementation "com.google.dagger:dagger:${versions.dagger}"
+    implementation "com.google.dagger:dagger-android:${versions.dagger}"
+    implementation "com.google.dagger:dagger-android-support:${versions.dagger}"
+    kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
+    kapt "com.google.dagger:dagger-android-processor:${versions.dagger}"
+
+    /* Support Library & Design */
+    implementation "com.android.support:appcompat-v7:${versions.android_support.appcompat}"
+    implementation "com.android.support:design:${versions.android_support.design}"
+    implementation "com.android.support.constraint:constraint-layout:${versions.android_support.constraint}"
+    implementation "com.android.support:recyclerview-v7:${versions.android_support.recyclerview}"
+    implementation "com.android.support:support-v4:${versions.android_support.v4}"
+
+    /* Testing jUnit4 */
+    testImplementation "junit:junit:${versions.junit}"
+    androidTestImplementation "com.android.support.test:runner:${versions.android_support.test_runner}"
+
+    /* Espresso */
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:${versions.espresso}"
+
+    /* Mockito */
+    testImplementation "org.mockito:mockito-core:${versions.mockito_core}"
+    testImplementation "org.mockito:mockito-inline:${versions.mockito_inline}"
+
+    /* Glide */
+    implementation "com.github.bumptech.glide:glide:${versions.glide}"
+
+    /* LiveCache */
+    implementation "com.mastercard.labs.android:livecache:${versions.livecache}@aar"
+
+    /* Moshi */
+    implementation "com.squareup.moshi:moshi:${versions.moshi}"
+    implementation "com.squareup.moshi:moshi-kotlin:${versions.moshi_kotlin}"
+
+    /* Retrofit 2 */
+    implementation "com.squareup.retrofit2:retrofit:${versions.retrofit}"
+    implementation "com.squareup.retrofit2:converter-gson:${versions.retrofit}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${versions.log_interceptor}"
+
+    /* Logger */
+    implementation "com.ech0s7r.android:loggerlib:${versions.logger}"
+
+    /* Architecture components */
+    implementation "android.arch.lifecycle:runtime:${versions.lifecycle}"
+    implementation "android.arch.lifecycle:extensions:${versions.lifecycle}"
+    implementation "android.arch.persistence.room:runtime:${versions.lifecycle}"
+    kapt "android.arch.lifecycle:compiler:${versions.lifecycle}"
+    kapt "android.arch.persistence.room:compiler:${versions.lifecycle}"
+
+    /* Paging library */
+    implementation "android.arch.paging:runtime:${versions.paging}"
+}
+
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
+}

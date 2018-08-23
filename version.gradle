@@ -1,0 +1,39 @@
+ext.buildConfig = [
+        'compileSdk': 28,
+        'minSdk'    : 16,
+        'targetSdk' : 28,
+        'buildTools': '28.0.1'
+]
+
+ext.versions = [
+        'gradle'         : [
+                'tools': '3.1.1'
+        ],
+        'kotlin'         : '1.2.50',
+        'coroutines'     : '0.23.4',
+        'dagger'         : '2.16',
+        'junit'          : '4.12',
+        'espresso'       : '3.0.2',
+        'mockito_core'   : '2.16.0',
+        'mockito_inline' : '2.8.9',
+        'moshi'          : '1.6.0',
+        'moshi_kotlin'   : '1.5.0',
+        'retrofit'       : '2.4.0',
+        'log_interceptor': '3.10.0',
+        'multidex'       : '1.0.3',
+        'logger'         : '1.2.11',
+        'lifecycle'      : '1.1.1',
+        'glide'          : '4.7.1',
+        'livecache'      : '1.0.2',
+        'paging'         : '1.0.0',
+        'android_support': [
+                'test_runner' : '1.0.2',
+                'constraint'  : '1.1.2',
+                'preference'  : '28.0.0-rc01',
+                'appcompat'   : '28.0.0-rc01',
+                'design'      : '28.0.0-rc01',
+                'recyclerview': '28.0.0-rc01',
+                'customtabs'  : '28.0.0-rc01',
+                'v4'          : '28.0.0-rc01',
+        ]
+]
