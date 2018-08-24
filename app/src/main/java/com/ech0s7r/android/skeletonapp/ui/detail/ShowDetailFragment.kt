@@ -2,7 +2,6 @@ package com.ech0s7r.android.skeletonapp.ui.detail
 
 import android.arch.paging.PagedList
 import android.os.Bundle
-import android.support.design.widget.AppBarLayout
 import android.support.v7.app.ActionBar
 import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.LayoutInflater
@@ -19,7 +18,6 @@ import com.ech0s7r.android.skeletonapp.utils.ImgUtils
 import com.ech0s7r.android.skeletonapp.utils.lifecycle.observeK
 import com.ech0s7r.android.skeletonapp.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_show_details.*
-import kotlinx.android.synthetic.main.toolbar.*
 import javax.inject.Inject
 
 
@@ -59,8 +57,7 @@ class ShowDetailFragment : BaseFragment() {
     private fun setupActionBar(actionBar: ActionBar?) {
         actionBar?.setDisplayHomeAsUpEnabled(true)
         // disable collapsing
-        (requireActivity().toolbar.layoutParams as AppBarLayout.LayoutParams)
-                .scrollFlags = 0
+//        (requireActivity().toolbar.layoutParams as AppBarLayout.LayoutParams).scrollFlags = 0
     }
 
     private fun similarShowChanged(pagedList: PagedList<Show>?) {
@@ -71,6 +68,7 @@ class ShowDetailFragment : BaseFragment() {
 
     private fun fillShowDetails(show: Show?) {
         Logger.i("selected show: $show")
+        main_container.smoothScrollTo(0, 0)
         show?.let {
             requireActivity().title = it.name
             title.text = it.name

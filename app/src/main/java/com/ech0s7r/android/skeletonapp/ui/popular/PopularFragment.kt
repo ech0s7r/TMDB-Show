@@ -2,7 +2,6 @@ package com.ech0s7r.android.skeletonapp.ui.popular
 
 import android.arch.paging.PagedList
 import android.os.Bundle
-import android.support.design.widget.AppBarLayout
 import android.support.v7.app.ActionBar
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -21,7 +20,6 @@ import com.ech0s7r.android.skeletonapp.utils.lifecycle.observeK
 import com.ech0s7r.android.skeletonapp.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_popular.*
-import kotlinx.android.synthetic.main.toolbar.*
 import javax.inject.Inject
 
 
@@ -58,8 +56,8 @@ class PopularFragment : BaseFragment() {
     private fun setupActionBar(actionBar: ActionBar?) {
         actionBar?.setDisplayHomeAsUpEnabled(false)
         // enable collapsing
-        (requireActivity().toolbar.layoutParams as AppBarLayout.LayoutParams)
-                .scrollFlags = AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL or AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS
+//        (requireActivity().toolbar.layoutParams as AppBarLayout.LayoutParams)
+//                .scrollFlags = AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL or AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS
     }
 
     private fun setupRecyclerView(listView: RecyclerView) {
