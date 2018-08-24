@@ -1,4 +1,4 @@
-package com.ech0s7r.android.skeletonapp.ui.popular
+package com.ech0s7r.android.skeletonapp.ui.common
 
 import android.app.Activity
 import android.arch.paging.PagedListAdapter
@@ -9,26 +9,18 @@ import android.view.View
 import android.view.ViewGroup
 import com.ech0s7r.android.skeletonapp.R
 import com.ech0s7r.android.skeletonapp.model.tv.Show
-import com.ech0s7r.android.skeletonapp.remote.api.RestAPI
 import com.ech0s7r.android.skeletonapp.repository.ShowDataSource
-import com.ech0s7r.android.skeletonapp.utils.ImgUtils
 import kotlinx.android.synthetic.main.list_item_network_state.view.*
-import kotlinx.android.synthetic.main.list_item_show.view.*
 
-class PopularListAdapter(private val activity: Activity, private val onShowClickListener: ((Show?) -> Unit)? = null)
+abstract class ShowPagedListAdapter(private val activity: Activity, private val onShowClickListener: ((Show?) -> Unit)? = null)
     : PagedListAdapter<Show, RecyclerView.ViewHolder>(SHOW_COMPARATOR) {
 
     private var networkState: ShowDataSource.NetworkState? = null
 
-    class ShowViewHolder(private val activity: Activity, itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(show: Show?, listener: ((Show?) -> Unit)? = null) {
-            with(itemView) {
-                show?.let {
-                    ImgUtils.load(activity, RestAPI.IMG_SMALL_BASE_PATH + it.poster_path, itemView.movie_image)
-                }
-                setOnClickListener { listener?.invoke(show) }
-            }
-        }
+    abstract val listItemResId: Int
+
+    abstract class ShowPagedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        abstract fun bind(show: Show?, listener: ((Show?) -> Unit)? = null)
     }
 
     class NetworkStateItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -41,9 +33,9 @@ class PopularListAdapter(private val activity: Activity, private val onShowClick
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
-            R.layout.list_item_show -> {
-                val v = LayoutInflater.from(parent.context).inflate(R.layout.list_item_show, parent, false)
-                ShowViewHolder(activity, v)
+            listItemResId -> {
+                val v = LayoutInflater.from(parent.context).inflate(listItemResId, parent, false)
+                createItemViewHolder(activity, v)
             }
             R.layout.list_item_network_state -> {
                 val v = LayoutInflater.from(parent.context).inflate(R.layout.list_item_network_state, parent, false)
@@ -54,9 +46,11 @@ class PopularListAdapter(private val activity: Activity, private val onShowClick
 
     }
 
+    abstract fun createItemViewHolder(activity: Activity, v: View): ShowPagedViewHolder
+
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (getItemViewType(position)) {
-            R.layout.list_item_show -> (holder as ShowViewHolder).bind(getItem(position), onShowClickListener)
+            listItemResId -> (holder as ShowPagedViewHolder).bind(getItem(position), onShowClickListener)
             R.layout.list_item_network_state -> (holder as NetworkStateItemViewHolder).bind(networkState)
         }
     }
@@ -67,7 +61,7 @@ class PopularListAdapter(private val activity: Activity, private val onShowClick
         return if (hasExtraRow() && position == itemCount - 1) {
             R.layout.list_item_network_state
         } else {
-            R.layout.list_item_show
+            listItemResId
         }
     }
 

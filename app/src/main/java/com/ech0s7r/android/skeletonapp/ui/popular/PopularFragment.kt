@@ -14,6 +14,7 @@ import com.ech0s7r.android.skeletonapp.model.tv.Show
 import com.ech0s7r.android.skeletonapp.repository.ShowDataSource
 import com.ech0s7r.android.skeletonapp.ui.base.BaseActivity
 import com.ech0s7r.android.skeletonapp.ui.base.BaseFragment
+import com.ech0s7r.android.skeletonapp.ui.common.ShowPagedListAdapter
 import com.ech0s7r.android.skeletonapp.ui.detail.ShowDetailFragment
 import com.ech0s7r.android.skeletonapp.utils.gotoFragment
 import com.ech0s7r.android.skeletonapp.utils.lifecycle.observeK
@@ -34,7 +35,7 @@ class PopularFragment : BaseFragment() {
     @Inject
     lateinit var viewModel: MainViewModel
 
-    private lateinit var adapter: PopularListAdapter
+    private lateinit var adapter: ShowPagedListAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
             inflater.inflate(R.layout.fragment_popular, container, false)
@@ -44,7 +45,7 @@ class PopularFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
         requireActivity().title = getString(R.string.app_name)
         setupActionBar((requireActivity() as BaseActivity).supportActionBar)
-        adapter = PopularListAdapter(requireActivity(), ::onShowSelected)
+        adapter = PopularPagedListAdapter(requireActivity(), ::onShowSelected)
         setupRecyclerView(list_view)
         with(viewModel) {
             popularShow.observeK(viewLifecycleOwner, ::popularShowChanged)

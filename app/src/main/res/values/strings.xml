@@ -2,4 +2,5 @@
     <string name="app_name">TMDB Movies</string>
     <string name="tagline">tagline</string>
     <string name="overview">overview</string>
+    <string name="similar_show">Similar</string>
 </resources>
