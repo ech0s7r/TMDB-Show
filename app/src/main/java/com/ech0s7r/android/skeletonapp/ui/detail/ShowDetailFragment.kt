@@ -45,11 +45,15 @@ class ShowDetailFragment : BaseFragment() {
     }
 
     private fun setupRecyclerView() {
-        adapter = SimilarPagedListAdapter(requireActivity())
+        adapter = SimilarPagedListAdapter(requireActivity(), ::onSimilarShowSelected)
         list_similar_show.adapter = adapter
         list_similar_show.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL)
 //        val snapHelper = PagerSnapHelper()
 //        snapHelper.attachToRecyclerView(list_similar_show)
+    }
+
+    private fun onSimilarShowSelected(show: Show?) {
+        show?.let { viewModel.setSelectedShow(it) }
     }
 
     private fun setupActionBar(actionBar: ActionBar?) {
@@ -72,7 +76,7 @@ class ShowDetailFragment : BaseFragment() {
             title.text = it.name
             ImgUtils.load(requireActivity(), RestAPI.IMG_LARGE_BASE_PATH + it.poster_path, poster)
             year.text = it.first_air_date.substringBefore("-")
-            companies.text = it.origin_country.joinToString(",")
+            companies.text = it.origin_country.joinToString(", ")
             overview.text = it.overview
         }
     }
