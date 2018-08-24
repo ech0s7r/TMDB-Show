@@ -45,8 +45,14 @@ class ShowDetailFragment : BaseFragment() {
 
     private fun fillShowDetails(show: Show?) {
         Logger.i("selected show: $show")
-        requireActivity().title = show?.name
-        ImgUtils.load(requireActivity(), RestAPI.IMG_LARGE_BASE_PATH + show?.poster_path.toString(), poster)
+        show?.let {
+            requireActivity().title = it.name
+            title.text = it.name
+            ImgUtils.load(requireActivity(), RestAPI.IMG_LARGE_BASE_PATH + it.poster_path, poster)
+            year.text = it.first_air_date.substringBefore("-")
+            companies.text = it.origin_country.joinToString(",")
+            overview.text = it.overview
+        }
     }
 
 }
