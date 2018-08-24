@@ -26,17 +26,23 @@ class MainViewModel @Inject constructor(private val repository: MainRepository) 
         }
     }
 
-    private val repoResult = Transformations.map(repository.showPopular) {
-        repository.requestPopular(PAGE_SIZE)
-    }
-
-    val popularShow = Transformations.switchMap(repoResult) { it.pagedList }
-    val networkState = Transformations.switchMap(repoResult) { it.networkState }
-    val refreshState = Transformations.switchMap(repoResult) { it.refreshState }
     val selectedShow = MutableLiveData<Show>()
 
+    private val popularRepoResult = Transformations.map(repository.showPopularTrigger) {
+        repository.requestPopular(PAGE_SIZE)
+    }
+    private val similarShowResult = Transformations.map(selectedShow) {
+        repository.requestSimilar(it.id, PAGE_SIZE)
+    }
+
+    val popularShow = Transformations.switchMap(popularRepoResult) { it.pagedList }
+    val networkState = Transformations.switchMap(popularRepoResult) { it.networkState }
+    val refreshState = Transformations.switchMap(popularRepoResult) { it.refreshState }
+    val similarShow = Transformations.switchMap(similarShowResult) { it.pagedList }
+
+
     fun refreshPopularShow() {
-        repoResult.value?.refresh?.invoke()
+        popularRepoResult.value?.refresh?.invoke()
     }
 
     fun setSelectedShow(show: Show) {

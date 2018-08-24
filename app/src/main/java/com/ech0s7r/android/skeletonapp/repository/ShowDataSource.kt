@@ -5,13 +5,12 @@ import android.arch.paging.PageKeyedDataSource
 import android.support.annotation.WorkerThread
 import com.ech0s7r.android.skeletonapp.model.tv.PagedResult
 import com.ech0s7r.android.skeletonapp.model.tv.Show
-import com.ech0s7r.android.skeletonapp.remote.api.RestAPI
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
-class ShowDataSource constructor(private val restAPI: RestAPI) : PageKeyedDataSource<Long, Show>() {
+class ShowDataSource constructor(private val pagedRequest: PagedRequest) : PageKeyedDataSource<Long, Show>() {
 
     enum class NetworkState {
         LOADING,
@@ -26,7 +25,8 @@ class ShowDataSource constructor(private val restAPI: RestAPI) : PageKeyedDataSo
     override fun loadInitial(params: LoadInitialParams<Long>, callback: LoadInitialCallback<Long, Show>) {
         initialLoading.postValue(NetworkState.LOADING)
         networkState.postValue(NetworkState.LOADING)
-        restAPI.getPopular(1).enqueue(object : Callback<PagedResult> {
+        pagedRequest.initApiCall().enqueue(object : Callback<PagedResult> {
+            //restAPI.getPopular(1).enqueue(object : Callback<PagedResult> {
             override fun onFailure(call: Call<PagedResult>, t: Throwable) {
                 networkState.postValue(NetworkState.FAILED)
             }
@@ -49,7 +49,8 @@ class ShowDataSource constructor(private val restAPI: RestAPI) : PageKeyedDataSo
     @WorkerThread
     override fun loadAfter(params: LoadParams<Long>, callback: LoadCallback<Long, Show>) {
         networkState.postValue(NetworkState.LOADING)
-        restAPI.getPopular(params.key.toInt()).enqueue(object : Callback<PagedResult> {
+//        restAPI.getPopular(params.key.toInt()).enqueue(object : Callback<PagedResult> {
+        pagedRequest.afterApiCall(params.key.toInt()).enqueue(object : Callback<PagedResult> {
             override fun onFailure(call: Call<PagedResult>, t: Throwable) {
                 networkState.postValue(NetworkState.FAILED)
             }

@@ -40,8 +40,7 @@ class ShowDetailFragment : BaseFragment() {
         setupRecyclerView()
         with(viewModel) {
             selectedShow.observeK(viewLifecycleOwner, ::fillShowDetails)
-
-            popularShow.observeK(viewLifecycleOwner, ::popularShowChanged)
+            similarShow.observeK(viewLifecycleOwner, ::similarShowChanged)
         }
     }
 
@@ -49,7 +48,6 @@ class ShowDetailFragment : BaseFragment() {
         adapter = SimilarPagedListAdapter(requireActivity())
         list_similar_show.adapter = adapter
         list_similar_show.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL)
-
 //        val snapHelper = PagerSnapHelper()
 //        snapHelper.attachToRecyclerView(list_similar_show)
     }
@@ -61,7 +59,7 @@ class ShowDetailFragment : BaseFragment() {
                 .scrollFlags = 0
     }
 
-    private fun popularShowChanged(pagedList: PagedList<Show>?) {
+    private fun similarShowChanged(pagedList: PagedList<Show>?) {
         pagedList?.let {
             adapter.submitList(it)
         }

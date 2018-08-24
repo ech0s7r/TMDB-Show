@@ -3,11 +3,8 @@ package com.ech0s7r.android.skeletonapp.repository
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Transformations
 import android.arch.paging.LivePagedListBuilder
-import android.content.Context
-import android.content.SharedPreferences
-import com.ech0s7r.android.skeletonapp.cache.ModelDatabase
 import com.ech0s7r.android.skeletonapp.model.tv.Show
-import com.ech0s7r.android.skeletonapp.remote.ModelDataSource
+import com.ech0s7r.android.skeletonapp.remote.ShowDataSource
 import com.ech0s7r.android.skeletonapp.utils.concurrent.AppExecutors
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -18,27 +15,20 @@ import javax.inject.Singleton
  */
 
 @Singleton
-class MainRepository @Inject constructor(private val ctx: Context,
-                                         private val db: ModelDatabase,
-                                         private val dataSource: ModelDataSource,
-                                         private val showDataFactory: ShowDataFactory) {
-
-    @Inject
-    lateinit var prefs: SharedPreferences
+class MainRepository @Inject constructor(private val dataSource: ShowDataSource) {
 
     private var initialized = false
 
-    internal val showPopular = MutableLiveData<Boolean>()
+    internal val showPopularTrigger = MutableLiveData<Boolean>()
 
     init {
         initializeData()
     }
 
-
     private fun initializeData() {
         if (initialized) return
         initialized = true
-        showPopular.value = true
+        showPopularTrigger.value = true
     }
 
     /**
@@ -46,17 +36,41 @@ class MainRepository @Inject constructor(private val ctx: Context,
      * @param pageSize page size
      */
     internal fun requestPopular(pageSize: Int): Listing<Show> {
-        val livePagedList = LivePagedListBuilder(showDataFactory, pageSize)
+        val dataFactory = dataSource.popularDataFactory
+        val livePagedList = LivePagedListBuilder(dataFactory, pageSize)
                 .setFetchExecutor(AppExecutors.networkIO)
                 .build()
-        val refreshState = Transformations.switchMap(showDataFactory.sourceLiveData) { it.initialLoading }
+        val refreshState = Transformations.switchMap(dataFactory.sourceLiveData) { it.initialLoading }
         return Listing(
                 pagedList = livePagedList,
-                networkState = Transformations.switchMap(showDataFactory.sourceLiveData) {
+                networkState = Transformations.switchMap(dataFactory.sourceLiveData) {
                     it.networkState
                 },
                 refresh = {
-                    showDataFactory.sourceLiveData.value?.invalidate()
+                    dataFactory.sourceLiveData.value?.invalidate()
+                },
+                refreshState = refreshState
+        )
+    }
+
+    /**
+     * Request similar show with custom page size
+     * @param showId id show
+     * @param pageSize page size
+     */
+    internal fun requestSimilar(showId: Int, pageSize: Int): Listing<Show> {
+        val dataFactory = dataSource.getSimilarDataFactory(showId)
+        val livePagedList = LivePagedListBuilder(dataFactory, pageSize)
+                .setFetchExecutor(AppExecutors.networkIO)
+                .build()
+        val refreshState = Transformations.switchMap(dataFactory.sourceLiveData) { it.initialLoading }
+        return Listing(
+                pagedList = livePagedList,
+                networkState = Transformations.switchMap(dataFactory.sourceLiveData) {
+                    it.networkState
+                },
+                refresh = {
+                    dataFactory.sourceLiveData.value?.invalidate()
                 },
                 refreshState = refreshState
         )
