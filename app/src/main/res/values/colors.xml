@@ -6,4 +6,10 @@
 
     <color name="transparent">#00FFFFFF</color>
     <color name="lightGray">#ee999295</color>
+    <color name="translucentBackground">#ED000000</color>
+
+    <color name="primaryText">#212121</color>
+    <color name="secondaryText">#727272</color>
+    <color name="divider">#B6B6B6</color>
+    <color name="lightWhite">#9dffffff</color>
 </resources>

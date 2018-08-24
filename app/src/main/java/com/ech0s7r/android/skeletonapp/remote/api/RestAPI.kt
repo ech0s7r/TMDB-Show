@@ -12,7 +12,9 @@ import retrofit2.http.Query
 interface RestAPI {
 
     companion object {
-        const val IMG_SMALL_BASE_PATH = "http://image.tmdb.org/t/p/w185/"
+        private const val IMG_BASE_PATH = "http://image.tmdb.org/t/p"
+        const val IMG_SMALL_BASE_PATH = "$IMG_BASE_PATH/w185/"
+        const val IMG_LARGE_BASE_PATH = "$IMG_BASE_PATH/w780/"
     }
 
     @GET("/3/tv/popular")

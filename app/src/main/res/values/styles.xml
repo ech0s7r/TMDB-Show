@@ -1,17 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="actionBarStyle">@style/ActionBarStyle</item>
-    </style>
-
-    <style name="ActionBarStyle" parent="Widget.AppCompat.Light.ActionBar.Solid.Inverse">
-        <item name="android:background">@color/colorPrimaryDark</item>
-        <item name="background">@color/colorPrimaryDark</item>
+        <item name="colorControlHighlight">@color/colorAccent</item>
     </style>
 
     <style name="MoviePoster">
@@ -19,6 +13,20 @@
         <item name="android:scaleType">centerCrop</item>
         <item name="android:transitionName" tools:targetApi="lollipop">moviePosterTransition</item>
         <item name="android:background">@color/lightGray</item>
+    </style>
+
+    <style name="DetailField" parent="android:Widget.TextView">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:lineSpacingExtra">6dp</item>
+        <item name="android:textColor">@color/primaryText</item>
+    </style>
+
+    <style name="HeaderTextView" parent="android:Widget.TextView">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
     </style>
 
 </resources>

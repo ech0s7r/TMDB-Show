@@ -2,7 +2,7 @@ package com.ech0s7r.android.skeletonapp.di.module.fragment
 
 import android.arch.lifecycle.ViewModelProviders
 import com.ech0s7r.android.skeletonapp.repository.MainRepository
-import com.ech0s7r.android.skeletonapp.ui.similar.ShowDetailFragment
+import com.ech0s7r.android.skeletonapp.ui.detail.ShowDetailFragment
 import com.ech0s7r.android.skeletonapp.viewmodel.MainViewModel
 import dagger.Module
 import dagger.Provides

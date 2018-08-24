@@ -15,18 +15,18 @@ import com.ech0s7r.android.skeletonapp.utils.ImgUtils
 import kotlinx.android.synthetic.main.list_item_network_state.view.*
 import kotlinx.android.synthetic.main.list_item_show.view.*
 
-class PopularListAdapter(private val activity: Activity, private val onShowClickListener: ((Show?, View?) -> Unit)? = null)
+class PopularListAdapter(private val activity: Activity, private val onShowClickListener: ((Show?) -> Unit)? = null)
     : PagedListAdapter<Show, RecyclerView.ViewHolder>(SHOW_COMPARATOR) {
 
     private var networkState: ShowDataSource.NetworkState? = null
 
     class ShowViewHolder(private val activity: Activity, itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(show: Show?, listener: ((Show?, View?) -> Unit)? = null) {
+        fun bind(show: Show?, listener: ((Show?) -> Unit)? = null) {
             with(itemView) {
                 show?.let {
                     ImgUtils.load(activity, RestAPI.IMG_SMALL_BASE_PATH + it.poster_path, itemView.movie_image)
                 }
-                setOnClickListener { listener?.invoke(show, itemView.movie_image) }
+                setOnClickListener { listener?.invoke(show) }
             }
         }
     }

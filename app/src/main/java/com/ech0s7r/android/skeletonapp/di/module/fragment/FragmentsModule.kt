@@ -1,7 +1,7 @@
 package com.ech0s7r.android.skeletonapp.di.module.fragment
 
 import com.ech0s7r.android.skeletonapp.ui.popular.PopularFragment
-import com.ech0s7r.android.skeletonapp.ui.similar.ShowDetailFragment
+import com.ech0s7r.android.skeletonapp.ui.detail.ShowDetailFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

@@ -26,9 +26,7 @@ class MainViewModel @Inject constructor(private val repository: MainRepository) 
         }
     }
 
-    private val showPopular = MutableLiveData<Boolean>()
-
-    private val repoResult = Transformations.map(showPopular) {
+    private val repoResult = Transformations.map(repository.showPopular) {
         repository.requestPopular(PAGE_SIZE)
     }
 
@@ -36,11 +34,6 @@ class MainViewModel @Inject constructor(private val repository: MainRepository) 
     val networkState = Transformations.switchMap(repoResult) { it.networkState }
     val refreshState = Transformations.switchMap(repoResult) { it.refreshState }
     val selectedShow = MutableLiveData<Show>()
-
-
-    fun showPopular() {
-        showPopular.value = true
-    }
 
     fun refreshPopularShow() {
         repoResult.value?.refresh?.invoke()

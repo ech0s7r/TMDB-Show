@@ -5,6 +5,7 @@ import com.ech0s7r.android.skeletonapp.ui.base.BaseActivity
 import com.ech0s7r.android.skeletonapp.ui.popular.PopularFragment
 import com.ech0s7r.android.skeletonapp.utils.gotoFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.toolbar.*
 
 /**
  * @author ech0s7r
@@ -15,10 +16,11 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        setSupportActionBar(toolbar)
+
         if (savedInstanceState == null) {
             gotoFragment<PopularFragment>(container.id)
         }
-
     }
 
 }
