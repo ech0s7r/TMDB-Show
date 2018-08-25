@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
     android:paddingTop="?attr/actionBarSize"
-    tools:context="com.ech0s7r.android.skeletonapp.MainActivity">
+    tools:context="com.ech0s7r.android.tvshow.MainActivity">
 
 
     <android.support.v4.widget.SwipeRefreshLayout

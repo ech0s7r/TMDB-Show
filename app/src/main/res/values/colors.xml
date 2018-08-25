@@ -4,7 +4,6 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="transparent">#00FFFFFF</color>
     <color name="lightGray">#f3999295</color>
     <color name="translucentBackground">#ED000000</color>
 
@@ -12,8 +11,13 @@
     <color name="secondaryText">#727272</color>
     <color name="divider">#B6B6B6</color>
     <color name="lightWhite">#9dffffff</color>
+    <color name="lightWhite_two">#f14b4949</color>
 
     <color name="lightBlack">#e8000000</color>
 
     <color name="white">#ffffff</color>
+
+    <color name="lightBlack_two">#E8151111</color>
+
+    <color name="lightBlack_three">#f8151111</color>
 </resources>

@@ -12,7 +12,7 @@ android {
     compileSdkVersion buildConfig.compileSdk
 
     defaultConfig {
-        applicationId "com.ech0s7r.android.skeletonapp"
+        applicationId "com.ech0s7r.android.tvshow"
         minSdkVersion buildConfig.minSdk
         targetSdkVersion buildConfig.targetSdk
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -55,13 +55,6 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
     kapt "com.google.dagger:dagger-android-processor:${versions.dagger}"
 
-    /* Support Library & Design */
-    implementation "com.android.support:appcompat-v7:${versions.android_support.appcompat}"
-    implementation "com.android.support:design:${versions.android_support.design}"
-    implementation "com.android.support.constraint:constraint-layout:${versions.android_support.constraint}"
-    implementation "com.android.support:recyclerview-v7:${versions.android_support.recyclerview}"
-    implementation "com.android.support:support-v4:${versions.android_support.v4}"
-
     /* Testing jUnit4 */
     testImplementation "junit:junit:${versions.junit}"
     androidTestImplementation "com.android.support.test:runner:${versions.android_support.test_runner}"
@@ -76,9 +69,6 @@ dependencies {
     /* Glide */
     implementation "com.github.bumptech.glide:glide:${versions.glide}"
 
-    /* LiveCache */
-    implementation "com.mastercard.labs.android:livecache:${versions.livecache}@aar"
-
     /* Moshi */
     implementation "com.squareup.moshi:moshi:${versions.moshi}"
     implementation "com.squareup.moshi:moshi-kotlin:${versions.moshi_kotlin}"
@@ -87,9 +77,6 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:${versions.retrofit}"
     implementation "com.squareup.retrofit2:converter-gson:${versions.retrofit}"
     implementation "com.squareup.okhttp3:logging-interceptor:${versions.log_interceptor}"
-
-    /* Logger */
-    implementation "com.ech0s7r.android:loggerlib:${versions.logger}"
 
     /* Architecture components */
     implementation "android.arch.lifecycle:runtime:${versions.lifecycle}"
@@ -100,6 +87,8 @@ dependencies {
 
     /* Paging library */
     implementation "android.arch.paging:runtime:${versions.paging}"
+
+    implementation project(":app-core")
 }
 
 kotlin {

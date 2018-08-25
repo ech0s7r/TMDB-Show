@@ -42,7 +42,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="16dp"
                 card_view:cardBackgroundColor="@color/lightWhite"
-                card_view:cardCornerRadius="2dp"
+                card_view:cardCornerRadius="4dp"
                 card_view:cardElevation="2dp"
                 card_view:cardUseCompatPadding="true"
                 card_view:contentPadding="16dp">
@@ -151,7 +151,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="16dp"
                 card_view:cardBackgroundColor="@color/lightWhite"
-                card_view:cardCornerRadius="2dp"
+                card_view:cardCornerRadius="4dp"
                 card_view:cardElevation="2dp"
                 card_view:cardUseCompatPadding="true"
                 card_view:contentPadding="16dp">
@@ -171,7 +171,7 @@
                         android:text="@string/similar_show"
                         android:textAllCaps="true"
                         android:textColor="@color/primaryText"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
