@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.Application
 import android.app.Service
 import android.support.v4.app.Fragment
+import com.ech0s7r.android.base.utils.di.DaggerUtils
 import com.ech0s7r.android.log.Logger
 import com.ech0s7r.android.log.LoggerConfigurator
 import com.ech0s7r.android.log.appender.LogcatAppender
@@ -11,7 +12,6 @@ import com.ech0s7r.android.log.layout.LogcatLayout
 import com.ech0s7r.android.tvshow.R.string.app_name
 import com.ech0s7r.android.tvshow.di.DaggerAppComponent
 import com.ech0s7r.android.tvshow.di.module.app.AppModule
-import com.ech0s7r.android.base.utils.di.DaggerUtils
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector

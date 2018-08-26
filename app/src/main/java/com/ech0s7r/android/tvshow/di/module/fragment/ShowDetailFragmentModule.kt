@@ -2,8 +2,8 @@ package com.ech0s7r.android.tvshow.di.module.fragment
 
 import android.arch.lifecycle.ViewModelProviders
 import com.ech0s7r.android.tvshow.repository.MainRepository
-import com.ech0s7r.android.tvshow.ui.detail.ShowDetailFragment
 import com.ech0s7r.android.tvshow.ui.MainViewModel
+import com.ech0s7r.android.tvshow.ui.detail.ShowDetailFragment
 import dagger.Module
 import dagger.Provides
 

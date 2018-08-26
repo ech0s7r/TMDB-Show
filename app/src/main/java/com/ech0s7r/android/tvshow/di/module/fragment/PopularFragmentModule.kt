@@ -2,8 +2,8 @@ package com.ech0s7r.android.tvshow.di.module.fragment
 
 import android.arch.lifecycle.ViewModelProviders
 import com.ech0s7r.android.tvshow.repository.MainRepository
-import com.ech0s7r.android.tvshow.ui.popular.PopularFragment
 import com.ech0s7r.android.tvshow.ui.MainViewModel
+import com.ech0s7r.android.tvshow.ui.popular.PopularFragment
 import dagger.Module
 import dagger.Provides
 
@@ -12,7 +12,7 @@ import dagger.Provides
  * @author ech0s7r
  */
 @Module
-class MainFragmentModule {
+class PopularFragmentModule {
 
     @Provides
     fun provideViewModel(fragment: PopularFragment, repo: MainRepository): MainViewModel {

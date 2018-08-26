@@ -3,8 +3,8 @@ package com.ech0s7r.android.tvshow
 import android.os.Bundle
 import android.view.View
 import com.ech0s7r.android.base.ui.base.BaseActivity
-import com.ech0s7r.android.tvshow.ui.popular.PopularFragment
 import com.ech0s7r.android.base.utils.gotoFragment
+import com.ech0s7r.android.tvshow.ui.popular.PopularFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**

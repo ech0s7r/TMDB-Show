@@ -3,9 +3,9 @@ package com.ech0s7r.android.tvshow.repository
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Transformations
 import android.arch.paging.LivePagedListBuilder
-import com.ech0s7r.android.tvshow.model.tv.Show
-import com.ech0s7r.android.tvshow.remote.ShowDataSource
 import com.ech0s7r.android.base.utils.concurrent.AppExecutors
+import com.ech0s7r.android.tvshow.data.Listing
+import com.ech0s7r.android.tvshow.model.tv.Show
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -14,7 +14,7 @@ import javax.inject.Singleton
  * @author ech0s7r
  */
 @Singleton
-class MainRepository @Inject constructor(private val dataSource: ShowDataSource) {
+class MainRepository @Inject constructor(private val dataSource: PagedShowDataSource) {
 
     private var initialized = false
 
@@ -27,6 +27,7 @@ class MainRepository @Inject constructor(private val dataSource: ShowDataSource)
     private fun initializeData() {
         if (initialized) return
         initialized = true
+        /* fetch once per app lifecycle */
         showPopularTrigger.value = true
     }
 

@@ -1,7 +1,7 @@
 package com.ech0s7r.android.tvshow.di.module.fragment
 
-import com.ech0s7r.android.tvshow.ui.popular.PopularFragment
 import com.ech0s7r.android.tvshow.ui.detail.ShowDetailFragment
+import com.ech0s7r.android.tvshow.ui.popular.PopularFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -12,7 +12,7 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class FragmentsModule {
 
-    @ContributesAndroidInjector(modules = [(MainFragmentModule::class)])
+    @ContributesAndroidInjector(modules = [(PopularFragmentModule::class)])
     abstract fun providePopularFragment(): PopularFragment
 
     @ContributesAndroidInjector(modules = [(ShowDetailFragmentModule::class)])

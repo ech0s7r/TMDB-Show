@@ -7,6 +7,7 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 /**
+ * TMDB API interface
  *
  * @author ech0s7r
  */
