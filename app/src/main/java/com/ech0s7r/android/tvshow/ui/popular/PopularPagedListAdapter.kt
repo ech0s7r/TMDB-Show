@@ -4,7 +4,7 @@ import android.app.Activity
 import android.view.View
 import com.ech0s7r.android.base.utils.ImgUtils
 import com.ech0s7r.android.tvshow.R
-import com.ech0s7r.android.tvshow.model.tv.Show
+import com.ech0s7r.android.tvshow.model.Show
 import com.ech0s7r.android.tvshow.remote.api.RestAPI
 import com.ech0s7r.android.tvshow.ui.common.ShowPagedListAdapter
 import kotlinx.android.synthetic.main.list_item_show.view.*

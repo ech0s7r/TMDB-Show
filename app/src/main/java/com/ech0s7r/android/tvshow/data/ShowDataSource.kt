@@ -3,8 +3,8 @@ package com.ech0s7r.android.tvshow.data
 import android.arch.lifecycle.MutableLiveData
 import android.arch.paging.PageKeyedDataSource
 import android.support.annotation.WorkerThread
-import com.ech0s7r.android.tvshow.model.tv.PagedResult
-import com.ech0s7r.android.tvshow.model.tv.Show
+import com.ech0s7r.android.tvshow.model.PagedResult
+import com.ech0s7r.android.tvshow.model.Show
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -70,8 +70,6 @@ class ShowDataSource constructor(private val pagedRequest: PagedRequest) : PageK
         })
     }
 
-    override fun loadBefore(params: LoadParams<Long>, callback: LoadCallback<Long, Show>) {
-
-    }
+    override fun loadBefore(params: LoadParams<Long>, callback: LoadCallback<Long, Show>) {}
 
 }

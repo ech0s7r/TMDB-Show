@@ -1,6 +1,6 @@
 package com.ech0s7r.android.tvshow.data
 
-import com.ech0s7r.android.tvshow.model.tv.PagedResult
+import com.ech0s7r.android.tvshow.model.PagedResult
 import retrofit2.Call
 
 /**

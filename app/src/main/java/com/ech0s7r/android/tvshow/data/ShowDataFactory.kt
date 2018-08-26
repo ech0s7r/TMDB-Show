@@ -2,7 +2,7 @@ package com.ech0s7r.android.tvshow.data
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.paging.DataSource
-import com.ech0s7r.android.tvshow.model.tv.Show
+import com.ech0s7r.android.tvshow.model.Show
 
 /**
  * @author ech0s7r

@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.ech0s7r.android.tvshow.R
 import com.ech0s7r.android.tvshow.data.ShowDataSource
-import com.ech0s7r.android.tvshow.model.tv.Show
+import com.ech0s7r.android.tvshow.model.Show
 import kotlinx.android.synthetic.main.list_item_network_state.view.*
 
 /**

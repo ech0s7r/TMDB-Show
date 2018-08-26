@@ -14,7 +14,7 @@ import com.ech0s7r.android.base.utils.gotoFragment
 import com.ech0s7r.android.base.utils.lifecycle.observeK
 import com.ech0s7r.android.tvshow.R
 import com.ech0s7r.android.tvshow.data.ShowDataSource
-import com.ech0s7r.android.tvshow.model.tv.Show
+import com.ech0s7r.android.tvshow.model.Show
 import com.ech0s7r.android.tvshow.ui.MainViewModel
 import com.ech0s7r.android.tvshow.ui.common.ShowPagedListAdapter
 import com.ech0s7r.android.tvshow.ui.detail.ShowDetailFragment

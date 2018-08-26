@@ -1,6 +1,6 @@
 package com.ech0s7r.android.tvshow.remote.api
 
-import com.ech0s7r.android.tvshow.model.tv.PagedResult
+import com.ech0s7r.android.tvshow.model.PagedResult
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

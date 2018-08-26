@@ -12,7 +12,7 @@ import com.ech0s7r.android.base.ui.base.BaseFragment
 import com.ech0s7r.android.base.utils.ImgUtils
 import com.ech0s7r.android.base.utils.lifecycle.observeK
 import com.ech0s7r.android.tvshow.R
-import com.ech0s7r.android.tvshow.model.tv.Show
+import com.ech0s7r.android.tvshow.model.Show
 import com.ech0s7r.android.tvshow.remote.api.RestAPI
 import com.ech0s7r.android.tvshow.ui.MainViewModel
 import com.ech0s7r.android.tvshow.ui.common.ShowPagedListAdapter

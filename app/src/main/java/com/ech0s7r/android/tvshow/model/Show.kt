@@ -1,4 +1,4 @@
-package com.ech0s7r.android.tvshow.model.tv
+package com.ech0s7r.android.tvshow.model
 
 /**
  * TMDB Show entity

@@ -5,7 +5,7 @@ import android.arch.lifecycle.Transformations
 import android.arch.paging.LivePagedListBuilder
 import com.ech0s7r.android.base.utils.concurrent.AppExecutors
 import com.ech0s7r.android.tvshow.data.Listing
-import com.ech0s7r.android.tvshow.model.tv.Show
+import com.ech0s7r.android.tvshow.model.Show
 import javax.inject.Inject
 import javax.inject.Singleton
 

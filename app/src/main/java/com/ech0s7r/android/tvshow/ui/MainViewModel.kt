@@ -4,7 +4,7 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Transformations
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
-import com.ech0s7r.android.tvshow.model.tv.Show
+import com.ech0s7r.android.tvshow.model.Show
 import com.ech0s7r.android.tvshow.repository.MainRepository
 import com.ech0s7r.android.tvshow.utils.Constants.PAGE_SIZE
 import javax.inject.Inject
