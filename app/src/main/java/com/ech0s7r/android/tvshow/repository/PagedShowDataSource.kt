@@ -3,6 +3,7 @@ package com.ech0s7r.android.tvshow.repository
 import com.ech0s7r.android.tvshow.data.PagedRequest
 import com.ech0s7r.android.tvshow.data.ShowDataFactory
 import com.ech0s7r.android.tvshow.remote.api.RestAPI
+import java.util.concurrent.Executor
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -11,7 +12,7 @@ import javax.inject.Singleton
  * @author ech0s7r
  */
 @Singleton
-class PagedShowDataSource @Inject constructor(private val restAPI: RestAPI) {
+class PagedShowDataSource @Inject constructor(val restAPI: RestAPI) {
 
     val popularDataFactory by lazy { createPopularDataFactory() }
 

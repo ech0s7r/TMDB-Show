@@ -2,6 +2,7 @@ package com.ech0s7r.android.tvshow.di.module.app
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.ech0s7r.android.base.utils.concurrent.AppExecutors
 import com.ech0s7r.android.tvshow.BuildConfig.TMDB_APIKEY
 import com.ech0s7r.android.tvshow.TvShowApp
 import com.ech0s7r.android.tvshow.remote.api.RestAPI
@@ -16,6 +17,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.Executor
 import javax.inject.Singleton
 
 /**
@@ -33,6 +35,10 @@ class AppModule(private val app: TvShowApp) {
     @Singleton
     @Provides
     fun provideApp(): TvShowApp = app
+
+    @Singleton
+    @Provides
+    fun provideNetworkExecutor(): Executor = AppExecutors.networkIO
 
     @Singleton
     @Provides

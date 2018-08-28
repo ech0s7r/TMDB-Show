@@ -77,6 +77,7 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:${versions.retrofit}"
     implementation "com.squareup.retrofit2:converter-gson:${versions.retrofit}"
     implementation "com.squareup.okhttp3:logging-interceptor:${versions.log_interceptor}"
+    testImplementation "com.squareup.retrofit2:retrofit-mock:${versions.retrofit}"
 
     /* Architecture components */
     implementation "android.arch.lifecycle:runtime:${versions.lifecycle}"
@@ -84,6 +85,7 @@ dependencies {
     implementation "android.arch.persistence.room:runtime:${versions.lifecycle}"
     kapt "android.arch.lifecycle:compiler:${versions.lifecycle}"
     kapt "android.arch.persistence.room:compiler:${versions.lifecycle}"
+    testImplementation "android.arch.core:core-testing:${versions.lifecycle}"
 
     /* Paging library */
     implementation "android.arch.paging:runtime:${versions.paging}"
