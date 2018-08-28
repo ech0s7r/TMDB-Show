@@ -24,7 +24,7 @@ import javax.inject.Inject
  *
  * @author ech0s7r
  */
-class TvShowApp : Application(), HasActivityInjector, HasSupportFragmentInjector, HasServiceInjector {
+open class TvShowApp : Application(), HasActivityInjector, HasSupportFragmentInjector, HasServiceInjector {
 
     @Inject
     lateinit var supportFragmentInjector: DispatchingAndroidInjector<Fragment>
@@ -34,6 +34,9 @@ class TvShowApp : Application(), HasActivityInjector, HasSupportFragmentInjector
 
     @Inject
     lateinit var activityInjector: DispatchingAndroidInjector<Activity>
+
+    open val appModule by lazy { getDaggerAppModule() }
+
 
     override fun onCreate() {
         super.onCreate()
@@ -49,11 +52,13 @@ class TvShowApp : Application(), HasActivityInjector, HasSupportFragmentInjector
 
     private fun initDI() {
         DaggerAppComponent.builder()
-                .appModule(AppModule(this))
+                .appModule(appModule)
                 .build()
                 .inject(this)
         DaggerUtils.registerAutoInject(this)
     }
+
+    open fun getDaggerAppModule(): AppModule = AppModule(this)
 
     override fun supportFragmentInjector(): AndroidInjector<Fragment> = supportFragmentInjector
 

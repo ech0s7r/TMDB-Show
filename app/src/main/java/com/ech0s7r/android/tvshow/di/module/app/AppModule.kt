@@ -25,7 +25,7 @@ import javax.inject.Singleton
  * @author ech0s7r
  */
 @Module
-class AppModule(private val app: TvShowApp) {
+open class AppModule(private val app: TvShowApp) {
 
     @Singleton
     @Provides
@@ -48,7 +48,7 @@ class AppModule(private val app: TvShowApp) {
 
     @Singleton
     @Provides
-    fun provideApiClient(): RestAPI {
+    open fun provideApiClient(): RestAPI {
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY
         val client = OkHttpClient.Builder()

@@ -15,7 +15,8 @@ android {
         applicationId "com.ech0s7r.android.tvshow"
         minSdkVersion buildConfig.minSdk
         targetSdkVersion buildConfig.targetSdk
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        //testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.ech0s7r.android.tvshow.JUnitRunner"
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -35,6 +36,11 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    sourceSets {
+        androidTest.java.srcDirs += "src/test-common/java"
+        test.java.srcDirs += "src/test-common/java"
     }
 }
 
@@ -61,6 +67,11 @@ dependencies {
 
     /* Espresso */
     androidTestImplementation "com.android.support.test.espresso:espresso-core:${versions.espresso}"
+    androidTestImplementation("com.android.support.test.espresso:espresso-contrib:${versions.espresso}") {
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude module: 'recyclerview-v7'
+    }
 
     /* Mockito */
     testImplementation "org.mockito:mockito-core:${versions.mockito_core}"
@@ -78,6 +89,7 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:${versions.retrofit}"
     implementation "com.squareup.okhttp3:logging-interceptor:${versions.log_interceptor}"
     testImplementation "com.squareup.retrofit2:retrofit-mock:${versions.retrofit}"
+    androidTestImplementation "com.squareup.retrofit2:retrofit-mock:${versions.retrofit}"
 
     /* Architecture components */
     implementation "android.arch.lifecycle:runtime:${versions.lifecycle}"
